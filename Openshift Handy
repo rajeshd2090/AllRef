@@ -1,0 +1,5 @@
+Log level: oc --loglevel 7 get pods
+get logs of request with api details
+
+debug command: oc debug deploymentconfigs/webapp-blue
+create debug pod and provide shell
