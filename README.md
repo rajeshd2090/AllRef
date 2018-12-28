@@ -15,3 +15,6 @@ https://blog.newrelic.com/technology/kubernetes-experts/
 Multi Datacenter Deployment Approach:
 
 https://blog.openshift.com/deploying-openshift-applications-multiple-datacenters/
+
+K8 Cluster creation 
+https://www.howtoforge.com/tutorial/centos-kubernetes-docker-cluster/
