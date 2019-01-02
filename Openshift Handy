@@ -1,3 +1,6 @@
+oc login with system admin:
+oc login -u system:admin -n default
+
 Log level: oc --loglevel 7 get pods
 get logs of request with api details
 
