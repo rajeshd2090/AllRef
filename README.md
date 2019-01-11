@@ -18,3 +18,6 @@ https://blog.openshift.com/deploying-openshift-applications-multiple-datacenters
 
 K8 Cluster creation 
 https://www.howtoforge.com/tutorial/centos-kubernetes-docker-cluster/
+
+Linux Foundation:
+https://portal.linuxfoundation.org/portal
