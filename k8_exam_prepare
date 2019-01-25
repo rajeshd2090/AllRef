@@ -29,7 +29,7 @@ kubectl run nginx --image=nginx --generator=run-pod/v1 --limits='cpu=0.2,memory=
 
 ******Deployment Short Command********
 
-kubectl run nginx --image=nginx --generator=run-pod/v1
+kubectl run nginx --image=nginx 
 
 
 Adding resource quata
