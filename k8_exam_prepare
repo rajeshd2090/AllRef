@@ -27,6 +27,31 @@ kubectl run nginx --image=nginx --generator=run-pod/v1 --limits='cpu=0.2,memory=
 --namespace=prod --expose=true --service-generator='service/v2' --port=8080 --labels='env=prod,ver=1.0' --dry-run -o yaml >> nginx_pod.yml
 
 
+******Deployment Short Command********
 
+kubectl run nginx --image=nginx --generator=run-pod/v1
+
+
+Adding resource quata
+kubectl run nginx --image=nginx  --limits='cpu=0.2,memory=10Mi' --requests='cpu=0.1,memory=5Mi'
+
+
+Adding namespace
+kubectl run nginx --image=nginx  --limits='cpu=0.2,memory=10Mi' --requests='cpu=0.1,memory=5Mi' --name
+space=dev
+
+
+Create Service and Deployment
+kubectl run nginx --image=nginx  --limits='cpu=0.2,memory=10Mi' --requests='cpu=0.1,memory=5Mi' --name
+space=qa --expose=true --service-generator='service/v2' --port=8080
+
+
+Adding Labels
+kubectl run nginx --image=nginx  --limits='cpu=0.2,memory=10Mi' --requests='cpu=0.1,memory=5Mi' --name
+space=prod --expose=true --service-generator='service/v2' --port=8080 --labels='env=prod,ver=1.0'
+
+Dry-run true
+kubectl run nginx --image=nginx  --limits='cpu=0.2,memory=10Mi' --requests='cpu=0.1,memory=5Mi' 
+--namespace=prod --expose=true --service-generator='service/v2' --port=8080 --labels='env=prod,ver=1.0' --replicas=3 --dry-run -o yaml >> nginx_pod.yml
 
 
