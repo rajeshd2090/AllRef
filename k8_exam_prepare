@@ -27,7 +27,7 @@ kubectl run nginx --image=nginx --generator=run-pod/v1 --limits='cpu=0.2,memory=
 --namespace=prod --expose=true --service-generator='service/v2' --port=8080 --labels='env=prod,ver=1.0' --dry-run -o yaml >> nginx_pod.yml
 
 
-******Deployment Short Command********
+**********************************Deployment********************************************************
 
 kubectl run nginx --image=nginx 
 
@@ -54,4 +54,32 @@ Dry-run true
 kubectl run nginx --image=nginx  --limits='cpu=0.2,memory=10Mi' --requests='cpu=0.1,memory=5Mi' 
 --namespace=prod --expose=true --service-generator='service/v2' --port=8080 --labels='env=prod,ver=1.0' --replicas=3 --dry-run -o yaml >> nginx_pod.yml
 
+
+Deployment Rollout commands
+
+kubectl rollout status deploy nginx-deployment
+kubectl rollout history deploy nginx-deployment
+kubectl rollout undo deploy nginx-deployment
+kubectl rollout undo deploy nginx-deployment --to-revision=2
+kubectl rollout pause deploy nginx-deployment
+kubectl rollout resume deploy nginx-deployment
+
+IMP configuration in Deployment
+revisionhistory
+progressDeadlineSeconds
+replicas
+strategy
+  Recreate
+  RollingUpdate
+    maxSurge
+    maxUnavailable
+paused
+minReadySeconds
+
+if revision history limit is 0 , rollback is not possible.
+if rollout is paused, rollout will not work unless it is resumed.
+
+Scaling 
+kubectl scale deploy nginx-deployment --replicas=5
+kubectl scale deploy nginx-deployment --current-replics=2 --replicas=5
 
