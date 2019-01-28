@@ -83,3 +83,5 @@ Scaling
 kubectl scale deploy nginx-deployment --replicas=5
 kubectl scale deploy nginx-deployment --current-replics=2 --replicas=5
 
+
+************************Services*******************************************
