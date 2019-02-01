@@ -87,3 +87,8 @@ kubectl scale deploy nginx-deployment --current-replics=2 --replicas=5
 ************************Services*******************************************
 #Two port service
 kubectl create svc clusterip my-svc --tcp=80:9376 --tcp=8080:9377 --dry-run -o yaml >> my-svc.yaml  
+
+***********************Data Injection****************************************
+
+ConfigMap:
+kubectl create configmap 
