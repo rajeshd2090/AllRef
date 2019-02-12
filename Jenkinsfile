@@ -4,9 +4,9 @@ pipeline {
   // All the stages and steps of this Pipeline will be executed on this Pod
   // After Pipeline completes the Pod is killed so every run will have clean
   // workspace
-  agent {
-    label 'maven'
-  }
+  //agent {
+  //  label 'maven'
+  //}
 
   // Pipeline Stages start here
   // Requeres at least one stage
