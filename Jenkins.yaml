@@ -6,6 +6,3 @@ plugins:
     pipeline-maven: 3.5.12
     workflow-aggregator: 2.5
     junit: 1.25
-  sites:
-  - id: "default"
-    url: "https://updates.jenkins.io/update-center.json"
