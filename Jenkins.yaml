@@ -1,69 +1,57 @@
-plugins:
-  required:
-    git: 3.9.1
-    pipeline-model-definition: 1.3.2
-    pipeline-stage-step: 2.3
-    pipeline-maven: 3.5.12
-    workflow-aggregator: 2.5
-    junit: 1.25
-  sites:
-  - id: "default"
-    url: "https://updates.jenkins.io/update-center.json"
 jenkins:
-  agentProtocols:
-  - "JNLP4-connect"
-  - "Ping"
-  authorizationStrategy:
-    loggedInUsersCanDoAnything:
-      allowAnonymousRead: false
-  crumbIssuer:
-    standard:
-      excludeClientIPFromCrumb: false
-  disableRememberMe: false
-  mode: NORMAL
-  numExecutors: 2
-  primaryView:
-    all:
-      name: "all"
-  quietPeriod: 5
-  scmCheckoutRetryCount: 0
-  securityRealm:
-    local:
-      allowsSignup: false
-      enableCaptcha: false
-      users:
-      - id: "piomin"
-        password: ${rootPassword}
-  slaveAgentPort: 50000
-  views:
-  - all:
-      name: "all"
+  systemMessage: "Hello"
+unclassified:
+  sonarGlobalConfiguration:
+    installations:
+    - name: "SonarQube"
+      serverAuthenticationToken: "{AQAAABAAAAAwyqRL5Lx1rK94nJj7OlFqfIjojWc8/mP/zCZEY9kH2zWkhFx5O12Zt+loz1bWSVb6dUog0GGlWxMCm292TbvFSQ==}"
+      serverUrl: "sonar"
+      triggers:
+        skipScmCause: false
+        skipUpstreamCause: false  
 tool:
   git:
     installations:
     - home: "git"
       name: "Default"
-  jdk:
-    installations:
-    - home: "/docker-java-home"
-      name: "jdk"
   maven:
     installations:
-    - name: "maven"
+    - name: "Maven_HOME"
       properties:
       - installSource:
           installers:
-          - maven:
-              id: "3.5.4"
-credentials:
-  system:
-    domainCredentials:
-      - domain :
-          name: "github.com"
-          description: "GitHub"
-        credentials:
-          - usernamePassword:
-              scope: SYSTEM
-              id: rajeshd2090
-              username: piomin
-              password: ${githubPassword}
+            - maven:
+                id: "3.6.0"
+  sonarRunnerInstallation:
+    installations:
+    - name: "SONARQUBE_SCANNERR"
+      properties:
+      - installSource:
+          installers:
+          - sonarRunnerInstaller:
+              id: "3.3.0.1492"
+  jdk:
+    defaultProperties:
+    - installSource:
+        installers:
+        - jdkInstaller:
+            acceptLicense: false
+    installations:
+    - home: "/usr/lib/jvm/java-1.8.0"
+      name: "JAVA_HOME"
+  nodejs:
+    defaultProperties:
+    - installSource:
+        installers:
+        - nodeJSInstaller:
+            npmPackagesRefreshHours: 72
+    installations:
+    - home: "NODE"
+      name: "NODE_PATH"
+      properties:
+      - installSource:
+          installers:
+          - nodeJSInstaller:
+              id: "9.11.2"
+              npmPackages: "artillery mocha"
+              npmPackagesRefreshHours: 72
