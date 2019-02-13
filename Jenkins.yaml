@@ -22,10 +22,3 @@ tool:
     installations:
     - home: "/usr/lib/jvm/java-1.8.0"
       name: "JAVA_HOME"
-  nodejs:
-    defaultProperties:
-    - installSource:
-        installers:
-        - nodeJSInstaller:
-            npmPackagesRefreshHours: 72
-
