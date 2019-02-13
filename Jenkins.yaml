@@ -1,5 +1,31 @@
 jenkins:
-  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code Plugin\n\n"
-  numExecutors: 5
-  scmCheckoutRetryCount: 2
-  mode: NORMAL
+  systemMessage: "This is OpenShift ++ Jenkins Instance Powered By Infosys \n\n"
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  maven:
+    installations:
+    - name: "Maven_HOME"
+      properties:
+      - installSource:
+          installers:
+            - maven:
+                id: "3.6.0" 
+  jdk:
+    defaultProperties:
+    - installSource:
+        installers:
+        - jdkInstaller:
+            acceptLicense: false
+    installations:
+    - home: "/usr/lib/jvm/java-1.8.0"
+      name: "JAVA_HOME"
+  nodejs:
+    defaultProperties:
+    - installSource:
+        installers:
+        - nodeJSInstaller:
+            npmPackagesRefreshHours: 72
+
