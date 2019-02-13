@@ -1,0 +1,25 @@
+Create Jenkin service with added plugin with below command
+
+1. Below cmd with start jenkins catalog service with plugins mentioned in command and Jenkins.yml configuration 
+  oc new-app --template=openshift/jenkins-persistent -e INSTALL_PLUGINS=configuration-as-code,configuration-as-code-support,matrix-auth:2.3 CASC_JENKINS_CONFIG=https://raw.githubusercontent.com/rajeshd2090/AllRef/master/Jenkins.yaml
+  # check oc client version if issue with new-app template command
+
+2. Create build config to create jenkins pipeline 
+   * build-config.yaml  
+    kind: "BuildConfig"
+	apiVersion: "v1"
+	metadata:
+	  name: "sample-pipeline"
+	spec:
+	  source:
+		git:
+		  uri: "https://github.com/rajeshd2090/AllRef"
+	  strategy:
+		jenkinsPipelineStrategy:
+		  jenkinsfilePath: Jenkinsfile
+		  
+   * oc apply -f build-config.yaml
+ 
+3. Start Pipeline
+   * oc start-build sample-pipeline
+  
