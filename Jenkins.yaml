@@ -1,5 +1,5 @@
 jenkins:
-  systemMessage: "This is OpenShift ++ Jenkins Instance Powered By Infosys \n\n"
+  systemMessage: "This is OpenShift Custom Jenkins Instance  \n\n"
 tool:
   git:
     installations:
