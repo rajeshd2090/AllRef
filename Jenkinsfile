@@ -1,32 +1,56 @@
+def checout(){
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'e35ac079-efc0-4391-8d43-9d4c95371ae3', url: "${GIT_URL}"]]])
+}
 pipeline {
     agent any
-    tools {
-        maven 'Maven_HOME'
+    environment {
+        GIT_URL='git@infygit.ad.infosys.com:lohit.jain'
     }
-    stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/piomin/sample-spring-boot-autoscaler.git', credentialsId: 'github-piomin', branch: 'master'
+    tools{
+        maven 'Maven_HOME'
+        jdk   'JAVA_HOME'
+    }
+ stages {
+        stage ('testconvert - Checkout') {
+            steps{
+                
+                checout()
             }
+ 	  
         }
         stage('Test') {
             steps {
-                dir('example-service') {
-                    sh 'mvn clean test'
-                }
+                bat 'mvn test'
+                junit '**/target/surefire-reports/*.xml'
             }
         }
-        stage('Build') {
+        stage('Packaging') {
             steps {
-                dir('example-service') {
-                    sh 'mvn clean install'
-                }
+                bat 'mvn war:war' 
             }
         }
-    }
-    post {
+        stage('Deploy') {
+            steps {
+                bat 'mvn deploy' 
+            }
+        }
+        
+}
+post {
         always {
-            junit '**/target/reports/**/*.xml'
+            echo "I AM ALWAYS first"
+        }
+        aborted {
+            echo "BUILD ABORTED"
+        }
+        success {
+            echo "BUILD SUCCESS"
+        }
+        unstable {
+            echo "BUILD UNSTABLE"
+        }
+        failure {
+            echo "BUILD FAILURE"
         }
     }
 }
