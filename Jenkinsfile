@@ -56,7 +56,7 @@ node
 {
    
    
-   def MAVEN_HOME = tool "MAVEN_HOME"
+   def MAVEN_HOME = tool "Maven_HOME"
    def JAVA_HOME = tool "JAVA_HOME"
    env.PATH="${env.PATH}:${MAVEN_HOME}/bin:${JAVA_HOME}/bin"
     stage('Build')
