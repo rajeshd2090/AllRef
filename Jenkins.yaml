@@ -1,2 +1,17 @@
-jenkins:
-  systemMessage: "Hello"
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  jdk: # (3)
+    installations:
+    - home: "/docker-java-home"
+      name: "jdk"
+  maven: # (4)
+    installations:
+    - name: "maven"
+      properties:
+      - installSource:
+          installers:
+          - maven:
+              id: "3.5.4"
