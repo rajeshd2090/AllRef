@@ -30,6 +30,13 @@ Dry-run true
 kubectl run nginx --image=nginx --generator=run-pod/v1 --limits='cpu=0.2,memory=10Mi' --requests='cpu=0.1,memory=5Mi' 
 --namespace=prod --expose=true --service-generator='service/v2' --port=8080 --labels='env=prod,ver=1.0' --dry-run -o yaml >> nginx_pod.yml
 
+args to container
+kubectl run liveness-exec --image=busybox --restart=Never --labels=test=liveness --dry-run -o yaml  -- /bin/sh -c 'touch 
+/tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600'  >> liveness-exec.yaml
+
+command to container
+kubectl run liveness-exec --image=busybox --restart=Never --labels=test=liveness --dry-run -o yaml  --command -- /bin/sh -c 'touch 
+/tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600'  >> liveness-exec.yaml
 
 **********************************Deployment********************************************************
 
