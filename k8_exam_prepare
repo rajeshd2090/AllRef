@@ -103,3 +103,11 @@ kubectl create svc clusterip my-svc --tcp=80:9376 --tcp=8080:9377 --dry-run -o y
 
 ConfigMap:
 kubectl create configmap 
+
+**********************Logging and Monitoring***********************************
+kubectl log <POD_NAME> -n=dev
+kubectl log <POD_NAME> -c <CONTAINER_NAME> -n=dev
+kubectl log <POD_NAME> -c <CONTAINER_NAME> -n=dev -f  ## Followup logs
+
+
+
