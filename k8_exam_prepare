@@ -110,4 +110,8 @@ kubectl log <POD_NAME> -c <CONTAINER_NAME> -n=dev
 kubectl log <POD_NAME> -c <CONTAINER_NAME> -n=dev -f  ## Followup logs
 
 
+*************************get information ******************************
 
+kubectl get pod nginx -o yaml --export   #get information by stripping cluster info
+kubectl get pod nginx -o yaml            #get info including cluster info
+kubect  get pod nginx -w                 #watch pod for status changes
