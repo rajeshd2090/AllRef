@@ -38,6 +38,9 @@ command to container
 kubectl run liveness-exec --image=busybox --restart=Never --labels=test=liveness --dry-run -o yaml  --command -- /bin/sh -c 'touch 
 /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600'  >> liveness-exec.yaml
 
+Env variables to container
+kubetcl run env-test --image=ngnix --env type=app --env stage=prod --restart=Never -n=myns
+
 **********************************Deployment********************************************************
 
 kubectl run nginx --image=nginx 
